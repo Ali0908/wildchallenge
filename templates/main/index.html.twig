@@ -1,30 +1,22 @@
-{% extends 'base.html.twig' %}
+    {% extends 'base.html.twig' %}
 
 
-{% block body %}
+    {% block body %}
 
-        <h1>Les Argonautes</h1>
+            <h1>Les Argonautes</h1>
 
-        <h2>Ajouter un(e) Argonaute</h2>
+        <a href="{{ path('app_main_new') }}">Create new</a>
 
-        <h2>Nom de l'Argonaute</h2>
+        <table class="table">
+            
+                <tbody>
 
-        {% set content %}
-         {# {{ include('main/_form.html.twig') }} #}
-        {% endset %}
+                    <h2>Membres de l'équipage</h2>
 
-    <table class="table">
-        
-        
-        
-            <tbody>
+                {% for customer in users %}
+                        <li>{{ customer.name}}</li>
+                    {% endfor %}
 
-                <h2>Membres de l'équipage</h2>
-
-               {% for customer in users %}
-                    <li>{{ customer.name}}</li>
-                {% endfor %}
-
-            </tbody>
-    </table>
-{% endblock %}
+                </tbody>
+        </table>
+    {% endblock %}

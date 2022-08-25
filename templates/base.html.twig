@@ -2,8 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="{{ asset('/doc/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
         <title>Les Argonautes{% block title %}Welcome!{% endblock %}</title>
+        <img src="https://www.wildcodeschool.com/assets/logo_main-e4f3f744c8e717f1b7df3858dce55a86c63d4766d5d9a7f454250145f097c2fe.png" alt="Wild Code School logo" />
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
