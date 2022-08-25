@@ -26,7 +26,7 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/", name="app_main_index", methods={"GET", "POST"})
+     * @Route("/new", name="app_main_new", methods={"GET", "POST"})
      */
     public function new(Request $request, UserRepository $userRepository): Response
     {
@@ -40,7 +40,7 @@ class MainController extends AbstractController
             return $this->redirectToRoute('app_main_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('main/index.html.twig', [
+        return $this->renderForm('main/new.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
@@ -74,7 +74,6 @@ class MainController extends AbstractController
             'user' => $user,
             'form' => $form,
         ]);
-
     }
 
     /**
@@ -88,5 +87,4 @@ class MainController extends AbstractController
 
         return $this->redirectToRoute('app_main_index', [], Response::HTTP_SEE_OTHER);
     }
-
 }

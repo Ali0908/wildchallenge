@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
 
 {% block body %}
 
@@ -10,19 +9,20 @@
 
         <h2>Nom de l'Argonaute</h2>
 
-    
+        {% set content %}
+         {# {{ include('main/_form.html.twig') }} #}
+        {% endset %}
+
     <table class="table">
         
-        {{ include('main/_form.html.twig') }}
+        
         
             <tbody>
 
                 <h2>Membres de l'équipage</h2>
 
-                {% for customer in user %}
-                
-                    <td>{{ customer.id }}</td>
-                    <p>{{ customer.name }}</p>
+               {% for customer in users %}
+                    <li>{{ customer.name}}</li>
                 {% endfor %}
 
             </tbody>
