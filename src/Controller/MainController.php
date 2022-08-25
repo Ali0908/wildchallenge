@@ -25,26 +25,26 @@ class MainController extends AbstractController
         ]);
     }
 
-    // /**
-    //  * @Route("/", name="app_main_index", methods={"GET", "POST"})
-    //  */
-    // public function new(Request $request, UserRepository $userRepository): Response
-    // {
-    //     $user = new User();
-    //     $form = $this->createForm(UserType::class, $user);
-    //     $form->handleRequest($request);
+    /**
+     * @Route("/", name="app_main_index", methods={"GET", "POST"})
+     */
+    public function new(Request $request, UserRepository $userRepository): Response
+    {
+        $user = new User();
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
 
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         $userRepository->add($user, true);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $userRepository->add($user, true);
 
-    //         return $this->redirectToRoute('app_main_index', [], Response::HTTP_SEE_OTHER);
-    //     }
+            return $this->redirectToRoute('app_main_index', [], Response::HTTP_SEE_OTHER);
+        }
 
-    //     return $this->renderForm('main/index.html.twig', [
-    //         'user' => $user,
-    //         'form' => $form,
-    //     ]);
-    // }
+        return $this->renderForm('main/index.html.twig', [
+            'user' => $user,
+            'form' => $form,
+        ]);
+    }
 
     /**
      * @Route("/{id}", name="app_main_show", methods={"GET"})
@@ -74,6 +74,7 @@ class MainController extends AbstractController
             'user' => $user,
             'form' => $form,
         ]);
+
     }
 
     /**
@@ -87,4 +88,5 @@ class MainController extends AbstractController
 
         return $this->redirectToRoute('app_main_index', [], Response::HTTP_SEE_OTHER);
     }
+
 }
