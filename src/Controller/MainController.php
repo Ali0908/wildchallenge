@@ -25,8 +25,9 @@ class MainController extends AbstractController
         ]);
     }
 
+
     /**
-     * @Route("/new", name="app_main_new", methods={"GET", "POST"})
+     * @Route("/new", name="app_main_new", methods={"GET","POST"})
      */
     public function new(Request $request, UserRepository $userRepository): Response
     {
@@ -40,51 +41,52 @@ class MainController extends AbstractController
             return $this->redirectToRoute('app_main_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('main/new.html.twig', [
+        return $this->renderForm('main/index.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
-    }
-
-    /**
-     * @Route("/{id}", name="app_main_show", methods={"GET"})
-     */
-    public function show(User $user): Response
-    {
-        return $this->render('main/index.html.twig', [
-            'user' => $user,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/edit", name="app_main_edit", methods={"GET", "POST"})
-     */
-    public function edit(Request $request, User $user, UserRepository $userRepository): Response
-    {
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $userRepository->add($user, true);
-
-            return $this->redirectToRoute('app_main_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('main/edit.html.twig', [
-            'user' => $user,
-            'form' => $form,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="app_main_delete", methods={"POST"})
-     */
-    public function delete(Request $request, User $user, UserRepository $userRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
-            $userRepository->remove($user, true);
-        }
-
-        return $this->redirectToRoute('app_main_index', [], Response::HTTP_SEE_OTHER);
     }
 }
+
+//     /**
+//      * @Route("/{id}", name="app_main_show", methods={"GET"})
+//      */
+//     public function show(User $user): Response
+//     {
+//         return $this->render('main/index.html.twig', [
+//             'user' => $user,
+//         ]);
+//     }
+
+//     /**
+//      * @Route("/{id}/edit", name="app_main_edit", methods={"GET", "POST"})
+//      */
+//     public function edit(Request $request, User $user, UserRepository $userRepository): Response
+//     {
+//         $form = $this->createForm(UserType::class, $user);
+//         $form->handleRequest($request);
+
+//         if ($form->isSubmitted() && $form->isValid()) {
+//             $userRepository->add($user, true);
+
+//             return $this->redirectToRoute('app_main_index', [], Response::HTTP_SEE_OTHER);
+//         }
+
+//         return $this->renderForm('main/edit.html.twig', [
+//             'user' => $user,
+//             'form' => $form,
+//         ]);
+//     }
+
+//     /**
+//      * @Route("/{id}", name="app_main_delete", methods={"POST"})
+//      */
+//     public function delete(Request $request, User $user, UserRepository $userRepository): Response
+//     {
+//         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+//             $userRepository->remove($user, true);
+//         }
+
+//         return $this->redirectToRoute('app_main_index', [], Response::HTTP_SEE_OTHER);
+//     }
+// 
