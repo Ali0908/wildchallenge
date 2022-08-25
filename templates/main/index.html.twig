@@ -3,33 +3,24 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
+        {# <h1>Les Argonautes</h1>
+
+        <h2>Ajouter un(e) Argonaute</h2>
+
+        <h2>Nom de l'Argonaute</h2>
+
+        <table class="table">
+        
+        {{ include('main/_form.html.twig') }} #}
+        
         <tbody>
-        {% for user in users %}
+
+        <h2>Membres de l'équipage</h2>
+        
             <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.name }}</td>
-                <td>
-                    <a href="{{ path('app_main_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_main_edit', {'id': user.id}) }}">edit</a>
-                </td>
+                <td>{{ users }}</td>
             </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_main_new') }}">Create new</a>
 {% endblock %}

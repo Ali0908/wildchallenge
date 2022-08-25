@@ -25,33 +25,33 @@ class MainController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="app_main_new", methods={"GET", "POST"})
-     */
-    public function new(Request $request, UserRepository $userRepository): Response
-    {
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+    // /**
+    //  * @Route("/", name="app_main_index", methods={"GET", "POST"})
+    //  */
+    // public function new(Request $request, UserRepository $userRepository): Response
+    // {
+    //     $user = new User();
+    //     $form = $this->createForm(UserType::class, $user);
+    //     $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $userRepository->add($user, true);
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         $userRepository->add($user, true);
 
-            return $this->redirectToRoute('app_main_index', [], Response::HTTP_SEE_OTHER);
-        }
+    //         return $this->redirectToRoute('app_main_index', [], Response::HTTP_SEE_OTHER);
+    //     }
 
-        return $this->renderForm('main/new.html.twig', [
-            'user' => $user,
-            'form' => $form,
-        ]);
-    }
+    //     return $this->renderForm('main/index.html.twig', [
+    //         'user' => $user,
+    //         'form' => $form,
+    //     ]);
+    // }
 
     /**
      * @Route("/{id}", name="app_main_show", methods={"GET"})
      */
     public function show(User $user): Response
     {
-        return $this->render('main/show.html.twig', [
+        return $this->render('main/index.html.twig', [
             'user' => $user,
         ]);
     }
