@@ -3,18 +3,20 @@
 
     {% block body %}
 
-            <h1>Les Argonautes</h1>
-
-        <a href="{{ path('app_main_new') }}">Create new</a>
-
-        <table class="table">
-            
+                <div class="container">
+                <a href="{{ path('app_main_new') }}">Ajouter un(e) Argonaute</a>
+                </div>
+                <table class="table">
                 <tbody>
 
                     <h2>Membres de l'équipage</h2>
 
                 {% for customer in users %}
+                        <ul class="multi-column">
                         <li>{{ customer.name}}</li>
+                        <li>{{ customer.name}}</li>
+                        <li>{{ customer.name}}</li>
+                        </ul>
                     {% endfor %}
 
                 </tbody>
